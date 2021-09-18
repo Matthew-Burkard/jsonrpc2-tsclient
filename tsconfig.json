@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es6",
+    "module": "es2015",
+    "rootDir": "src",
+    "moduleResolution": "Node",
+    "sourceMap": true
+  },
+  "include": [
+      "src/**/*",
+  ]
+}
