@@ -1,4 +1,8 @@
-import {ErrorResponseObject, RequestObject, ResultResponseObject} from "./objects.js";
+import {
+  ErrorResponseObject,
+  RequestObject,
+  ResultResponseObject
+} from "./objects.js";
 import {getErrorByCode, ServerError} from "./errors.js";
 
 export abstract class JSONRPCClient {
