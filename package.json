@@ -1,12 +1,14 @@
 {
   "name": "jsonrpc2-tsclient",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["/dist"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc --build"
+    "build": "tsc"
   },
   "dependencies": {
     "axios": "^0.21.4",
