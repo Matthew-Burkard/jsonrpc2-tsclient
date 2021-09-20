@@ -1,10 +1,10 @@
 import {ErrorObject} from "./objects.js";
 
-export const PARSE_ERROR = new ErrorObject(-32700, 'Parse error');
-export const INVALID_REQUEST = new ErrorObject(-32600, 'Invalid Request');
-export const METHOD_NOT_FOUND = new ErrorObject(-32601, 'Method not found');
-export const INVALID_PARAMS = new ErrorObject(-32602, 'Invalid params');
-export const INTERNAL_ERROR = new ErrorObject(-32603, 'Internal error');
+const PARSE_ERROR = new ErrorObject(-32700, 'Parse error');
+const INVALID_REQUEST = new ErrorObject(-32600, 'Invalid Request');
+const METHOD_NOT_FOUND = new ErrorObject(-32601, 'Method not found');
+const INVALID_PARAMS = new ErrorObject(-32602, 'Invalid params');
+const INTERNAL_ERROR = new ErrorObject(-32603, 'Internal error');
 
 
 export class JSONRPCError extends Error {
