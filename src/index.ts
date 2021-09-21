@@ -1,4 +1,4 @@
-import {JSONRPCClient} from "./client";
+import {JSONRPCClient} from "./client.js";
 import {
   getErrorByCode,
   InternalError,
@@ -8,7 +8,7 @@ import {
   MethodNotFound,
   ParseError,
   ServerError
-} from "./errors";
+} from "./errors.js";
 import {RPCHTTPClient} from "./http_client";
 import {
   ErrorObject,
@@ -16,7 +16,7 @@ import {
   NotificationObject,
   RequestObject,
   ResultResponseObject
-} from "./objects";
+} from "./objects.js";
 
 export default {
   JSONRPCClient,
