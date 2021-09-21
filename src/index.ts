@@ -9,7 +9,7 @@ import {
   ParseError,
   ServerError
 } from "./errors.js";
-import {RPCHTTPClient} from "./http_client";
+import {RPCHTTPClient} from "./http_client.js";
 import {
   ErrorObject,
   ErrorResponseObject,
