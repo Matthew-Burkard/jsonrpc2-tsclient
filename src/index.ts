@@ -1,6 +1,37 @@
-import {RPCHTTPClient} from "./http_client";
 import {JSONRPCClient} from "./client";
-import * as errors from "./errors";
-import * as objects from "./objects";
+import {
+  getErrorByCode,
+  InternalError,
+  InvalidParams,
+  InvalidRequest,
+  JSONRPCError,
+  MethodNotFound,
+  ParseError,
+  ServerError
+} from "./errors";
+import {RPCHTTPClient} from "./http_client";
+import {
+  ErrorObject,
+  ErrorResponseObject,
+  NotificationObject,
+  RequestObject,
+  ResultResponseObject
+} from "./objects";
 
-export {RPCHTTPClient, JSONRPCClient, errors, objects};
+export default {
+  JSONRPCClient,
+  RPCHTTPClient,
+  RequestObject,
+  NotificationObject,
+  ErrorObject,
+  ErrorResponseObject,
+  ResultResponseObject,
+  InternalError,
+  InvalidParams,
+  InvalidRequest,
+  JSONRPCError,
+  MethodNotFound,
+  ParseError,
+  ServerError,
+  getErrorByCode
+};
