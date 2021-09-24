@@ -4,13 +4,16 @@ import axios from "axios";
 
 export class RPCHTTPClient extends JSONRPCClient {
   url: string;
+  headers: object;
 
-  constructor(url: string) {
+  constructor(url: string, headers: object = null) {
     super();
     this.url = url;
+    this.headers = headers ?? {};
+    this.headers['Content-Type'] = 'application/json';
   }
 
   async sendAndGetJSON(request: RequestObject): Promise<any> {
-    return (await axios.post(this.url, request)).data;
+    return (await axios.post(this.url, request, this.headers)).data;
   }
 }
