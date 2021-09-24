@@ -1,13 +1,13 @@
 import {JSONRPCClient} from "./client.js";
 import {
-  getErrorByCode,
   InternalError,
   InvalidParams,
   InvalidRequest,
   JSONRPCError,
   MethodNotFound,
   ParseError,
-  ServerError
+  ServerError,
+  getErrorByCode,
 } from "./errors.js";
 import {RPCHTTPClient} from "./http_client.js";
 import {
@@ -18,20 +18,20 @@ import {
   ResultResponseObject
 } from "./objects.js";
 
-export default {
-  JSONRPCClient,
-  RPCHTTPClient,
-  RequestObject,
-  NotificationObject,
+export {
   ErrorObject,
   ErrorResponseObject,
-  ResultResponseObject,
   InternalError,
   InvalidParams,
   InvalidRequest,
+  JSONRPCClient,
   JSONRPCError,
   MethodNotFound,
+  NotificationObject,
   ParseError,
+  RPCHTTPClient,
+  RequestObject,
+  ResultResponseObject,
   ServerError,
   getErrorByCode
 };

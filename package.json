@@ -1,6 +1,6 @@
 {
   "name": "jsonrpc2-tsclient",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "type": "module",
   "main": "dist/index.js",
