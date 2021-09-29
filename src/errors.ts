@@ -11,7 +11,11 @@ export class JSONRPCError extends Error {
   constructor(error: ErrorObject) {
     let msg = `${error.code}: ${error.message}`;
     if (error.data !== undefined) {
-      msg += ` ${error.data}`;
+      try {
+        msg += ` ${error.data.toString()}`;
+      } catch (_e) {
+        msg += ` ${error.data}`;
+      }
     }
     super(msg);
 
