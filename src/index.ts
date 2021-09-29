@@ -9,7 +9,7 @@ import {
   ServerError,
   getErrorByCode,
 } from "./errors.js";
-import {RPCHTTPClient} from "./http_client.js";
+import {RPCHTTPClient} from "./httpclient.js";
 import {
   ErrorObject,
   ErrorResponseObject,
