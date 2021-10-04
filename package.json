@@ -1,7 +1,7 @@
 {
   "name": "jsonrpc2-tsclient",
   "version": "1.2.1",
-  "description": "",
+  "description": "A class library for developing JSON-RPC 2.0 clients.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,5 +16,6 @@
   },
   "keywords": ["jsonrpc"],
   "author": "Matthew Burkard",
+  "homepage": "https://gitlab.com/mburkard/jsonrpc2-tsclient",
   "license": "AGPLv3"
 }
