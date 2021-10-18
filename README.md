@@ -34,13 +34,13 @@ Defining and using the corresponding client would look like this:
 ```typescript
 class MathClient extends RPCHTTPClient {
   async add(a: number, b: number): Promise<number> {
-    return await this.call('add', [a, b]);
+    return this.call('add', [a, b]);
   }
   async subtract(a: number, b: number): Promise<number> {
-    return await this.call('subtract', [a, b]);
+    return this.call('subtract', [a, b]);
   }
   async divide(a: number, b: number): Promise<number> {
-    return await this.call('divide', [a, b]);
+    return this.call('divide', [a, b]);
   }
 }
 
