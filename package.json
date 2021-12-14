@@ -1,6 +1,6 @@
 {
   "name": "jsonrpc2-tsclient",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A class library for developing JSON-RPC 2.0 clients.",
   "type": "module",
   "main": "dist/index.js",
