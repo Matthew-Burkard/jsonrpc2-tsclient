@@ -4,11 +4,15 @@ export class RequestObject {
   params?: object | Array<any>;
   jsonrpc: string;
 
-  constructor(id?: number | string, method?: string, params?: object | Array<any>) {
+  constructor(
+    id?: number | string,
+    method?: string,
+    params?: object | Array<any>
+  ) {
     this.id = id;
     this.method = method;
     this.params = params;
-    this.jsonrpc = '2.0';
+    this.jsonrpc = "2.0";
   }
 }
 
@@ -20,7 +24,7 @@ export class NotificationObject {
   constructor(method?: string, params?: object | Array<any>) {
     this.method = method;
     this.params = params;
-    this.jsonrpc = '2.0';
+    this.jsonrpc = "2.0";
   }
 }
 
@@ -44,7 +48,7 @@ export class ErrorResponseObject {
   constructor(id?: number | string, error?: ErrorObject) {
     this.id = id;
     this.error = error;
-    this.jsonrpc = '2.0';
+    this.jsonrpc = "2.0";
   }
 }
 
@@ -56,6 +60,6 @@ export class ResultResponseObject {
   constructor(id?: number | string, result?: any) {
     this.id = id;
     this.result = result;
-    this.jsonrpc = '2.0';
+    this.jsonrpc = "2.0";
   }
 }

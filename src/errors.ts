@@ -1,11 +1,10 @@
-import {ErrorObject} from "./objects.js";
+import { ErrorObject } from "./objects.js";
 
-const PARSE_ERROR = new ErrorObject(-32700, 'Parse error');
-const INVALID_REQUEST = new ErrorObject(-32600, 'Invalid Request');
-const METHOD_NOT_FOUND = new ErrorObject(-32601, 'Method not found');
-const INVALID_PARAMS = new ErrorObject(-32602, 'Invalid params');
-const INTERNAL_ERROR = new ErrorObject(-32603, 'Internal error');
-
+const PARSE_ERROR = new ErrorObject(-32700, "Parse error");
+const INVALID_REQUEST = new ErrorObject(-32600, "Invalid Request");
+const METHOD_NOT_FOUND = new ErrorObject(-32601, "Method not found");
+const INVALID_PARAMS = new ErrorObject(-32602, "Invalid params");
+const INTERNAL_ERROR = new ErrorObject(-32603, "Internal error");
 
 export class JSONRPCError extends Error {
   constructor(error: ErrorObject) {
@@ -73,10 +72,10 @@ export class ServerError extends JSONRPCError {
 
 export function getErrorByCode(code) {
   return {
-    '-32700': ParseError,
-    '-32600': InvalidRequest,
-    '-32601': MethodNotFound,
-    '-32602': InvalidParams,
-    '-32603': InternalError
+    "-32700": ParseError,
+    "-32600": InvalidRequest,
+    "-32601": MethodNotFound,
+    "-32602": InvalidParams,
+    "-32603": InternalError,
   }[code as string];
 }

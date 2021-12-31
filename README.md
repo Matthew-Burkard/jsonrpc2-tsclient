@@ -34,20 +34,20 @@ Defining and using the corresponding client would look like this:
 ```typescript
 class MathClient extends RPCHTTPClient {
   async add(a: number, b: number): Promise<number> {
-    return this.call('add', [a, b]);
+    return this.call("add", [a, b]);
   }
   async subtract(a: number, b: number): Promise<number> {
-    return this.call('subtract', [a, b]);
+    return this.call("subtract", [a, b]);
   }
   async divide(a: number, b: number): Promise<number> {
-    return this.call('divide', [a, b]);
+    return this.call("divide", [a, b]);
   }
 }
 
-var client = new MathClient('http://localhost:5000/api/v1');
-client.add(2, 3).then(res => console.log(res));
-client.subtract(2, 3).then(res => console.log(res));
-client.divide(3, 2).then(res => console.log(res));
+var client = new MathClient("http://localhost:5000/api/v1");
+client.add(2, 3).then((res) => console.log(res));
+client.subtract(2, 3).then((res) => console.log(res));
+client.divide(3, 2).then((res) => console.log(res));
 ```
 
 ## Errors
@@ -56,13 +56,15 @@ If the server responds with an error, an RpcError is thrown.
 There is an RpcError for each standard JSON RPC 2.0 error, each of them extends RpcError.
 
 ```typescript
-var client = new MathClient('http://localhost:5000/api/v1');
+var client = new MathClient("http://localhost:5000/api/v1");
 
-client.add('two', 'three')
-  .then(res => console.log(res))
-  .catch(error => console.log(error));  // InvalidParams error.
+client
+  .add("two", "three")
+  .then((res) => console.log(res))
+  .catch((error) => console.log(error)); // InvalidParams error.
 
-client.divide(0, 0)
-  .then(res => console.log(res))
-  .catch(error => console.log(error));  // ServerError error.
+client
+  .divide(0, 0)
+  .then((res) => console.log(res))
+  .catch((error) => console.log(error)); // ServerError error.
 ```

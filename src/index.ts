@@ -1,4 +1,4 @@
-import {JSONRPCClient} from "./client.js";
+import { JSONRPCClient } from "./client.js";
 import {
   InternalError,
   InvalidParams,
@@ -9,13 +9,13 @@ import {
   ServerError,
   getErrorByCode,
 } from "./errors.js";
-import {RPCHTTPClient} from "./httpclient.js";
+import { RPCHTTPClient } from "./httpclient.js";
 import {
   ErrorObject,
   ErrorResponseObject,
   NotificationObject,
   RequestObject,
-  ResultResponseObject
+  ResultResponseObject,
 } from "./objects.js";
 
 export {
@@ -33,5 +33,5 @@ export {
   RequestObject,
   ResultResponseObject,
   ServerError,
-  getErrorByCode
+  getErrorByCode,
 };

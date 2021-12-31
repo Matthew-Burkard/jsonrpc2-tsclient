@@ -1,12 +1,11 @@
 import {
   ErrorResponseObject,
   RequestObject,
-  ResultResponseObject
+  ResultResponseObject,
 } from "./objects.js";
-import {getErrorByCode, ServerError} from "./errors.js";
+import { getErrorByCode, ServerError } from "./errors.js";
 
 export abstract class JSONRPCClient {
-
   public preCallHooks: CallableFunction[] = [];
   public preCallAsyncHooks: CallableFunction[] = [];
   private ids: Map<number, number> = new Map();
@@ -23,11 +22,11 @@ export abstract class JSONRPCClient {
     return newId;
   }
 
-  protected abstract sendAndGetJSON(request: RequestObject): Promise<any>
+  protected abstract sendAndGetJSON(request: RequestObject): Promise<any>;
 
   protected async call(method: string, params?: any[] | object): Promise<any> {
-    this.preCallHooks.map(it => it());
-    await Promise.all(this.preCallAsyncHooks.map(it => it()));
+    this.preCallHooks.map((it) => it());
+    await Promise.all(this.preCallAsyncHooks.map((it) => it()));
 
     let request = new RequestObject(this.getId(), method, params);
     let data = await this.sendAndGetJSON(request);
