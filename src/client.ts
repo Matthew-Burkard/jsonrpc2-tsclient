@@ -41,7 +41,7 @@ export abstract class JSONRPCClient {
     } else if (data.error !== undefined) {
       response = Object.assign(new ErrorResponseObject(), data);
       let error = response.error;
-      throw new (getErrorByCode(error.code) ?? ServerError)(error);
+      throw new (getErrorByCode(error.code) || ServerError)(error);
     } else {
       throw Error(`Invalid response: ${data}`);
     }

@@ -25,7 +25,7 @@ export class JSONRPCError extends Error {
 
 export class ParseError extends JSONRPCError {
   constructor(error?: ErrorObject) {
-    super(error ?? PARSE_ERROR);
+    super(error || PARSE_ERROR);
 
     Object.setPrototypeOf(this, ParseError.prototype);
   }
@@ -33,7 +33,7 @@ export class ParseError extends JSONRPCError {
 
 export class InvalidRequest extends JSONRPCError {
   constructor(error?: ErrorObject) {
-    super(error ?? INVALID_REQUEST);
+    super(error || INVALID_REQUEST);
 
     Object.setPrototypeOf(this, InvalidRequest.prototype);
   }
@@ -41,7 +41,7 @@ export class InvalidRequest extends JSONRPCError {
 
 export class MethodNotFound extends JSONRPCError {
   constructor(error?: ErrorObject) {
-    super(error ?? METHOD_NOT_FOUND);
+    super(error || METHOD_NOT_FOUND);
 
     Object.setPrototypeOf(this, MethodNotFound.prototype);
   }
@@ -49,7 +49,7 @@ export class MethodNotFound extends JSONRPCError {
 
 export class InvalidParams extends JSONRPCError {
   constructor(error?: ErrorObject) {
-    super(error ?? INVALID_PARAMS);
+    super(error || INVALID_PARAMS);
 
     Object.setPrototypeOf(this, InvalidParams.prototype);
   }
@@ -57,7 +57,7 @@ export class InvalidParams extends JSONRPCError {
 
 export class InternalError extends JSONRPCError {
   constructor(error?: ErrorObject) {
-    super(error ?? INTERNAL_ERROR);
+    super(error || INTERNAL_ERROR);
 
     Object.setPrototypeOf(this, InternalError.prototype);
   }

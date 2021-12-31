@@ -9,7 +9,7 @@ export class RPCHTTPClient extends JSONRPCClient {
   constructor(url: string, headers: object = null) {
     super();
     this.url = url;
-    this.headers = headers ?? {};
+    this.headers = headers || {};
     this.headers['Content-Type'] = 'application/json';
   }
 
