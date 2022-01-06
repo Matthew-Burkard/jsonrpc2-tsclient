@@ -6,7 +6,7 @@ export class RPCHTTPClient extends JSONRPCClient {
   url: string;
   headers: object;
 
-  constructor(url: string, headers: object = null) {
+  constructor(url: string, headers: object | null = null) {
     super();
     this.url = url;
     this.headers = headers || {};
