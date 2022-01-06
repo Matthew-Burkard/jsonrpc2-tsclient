@@ -2,6 +2,20 @@
 
 A collection of classes for creating JSON RPC 2.0 clients.
 
+### Install
+
+npm
+
+```shell
+npm i jsonrpc2-tsclient
+```
+
+yarn
+
+```shell
+yarn add jsonrpc2-tsclient
+```
+
 ### JSONRPCClient Abstract Class
 
 JSON-RPC 2.0 is transport agnostic. This library provides an abstract
