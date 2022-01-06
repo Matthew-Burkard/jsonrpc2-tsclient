@@ -13,7 +13,7 @@ export class RPCHTTPClient extends JSONRPCClient {
     this.headers["Content-Type"] = "application/json";
   }
 
-  async sendAndGetJSON(request: RequestObject): Promise<any> {
+  protected async sendAndGetJSON(request: RequestObject): Promise<any> {
     return (await axios.post(this.url, request, { headers: this.headers }))
       .data;
   }
