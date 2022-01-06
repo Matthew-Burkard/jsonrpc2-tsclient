@@ -1,70 +1,57 @@
 # JSON RPC 2.0 Client
 
-A collection of classes for creating JSON RPC 2.0 clients in TypeScript.
+A collection of classes for creating JSON RPC 2.0 clients.
 
-## Usage
+### JSONRPCClient Abstract Class
 
-If a JSON RPC server defines the methods "add", "subtract", and "divide", expecting the following requests:
+JSON-RPC 2.0 is transport agnostic. This library provides an abstract
+class that can be extended to create clients for different transports.
 
-```json
-{
-  "id": 1,
-  "method": "add",
-  "params": [2, 3],
-  "jsonrpc": "2.0"
-}
+### Implementations
 
-{
-  "id": 2,
-  "method": "subtract",
-  "params": [2, 3],
-  "jsonrpc": "2.0"
-}
+To make client for a transport, extend the `JSONRPCClient` class and
+implement the `sendAndGetJSON` which takes a request object and is
+expected to return a JSON-RPC 2.0 response as an object. `JSONRPCClient`
+has a `call` method that uses this internally.
 
-{
-  "id": 3,
-  "method": "divide",
-  "params": [3, 2],
-  "jsonrpc": "2.0"
+A default HTTP implementation is provided:
+
+```typescript
+export class RPCHTTPClient extends JSONRPCClient {
+  url: string;
+  headers: object;
+
+  constructor(url: string, headers: object | null = null) {
+    super();
+    this.url = url;
+    this.headers = headers || {};
+    this.headers["Content-Type"] = "application/json";
+  }
+
+  protected async sendAndGetJSON(request: RequestObject): Promise<any> {
+    return (await axios.post(this.url, request, {headers: this.headers})).data;
+  }
 }
 ```
 
-Defining and using the corresponding client would look like this:
+### Usage
+
+The `JSONRPCClient` will handle forming requests and parsing responses.
+To call a JSON-RPC 2.0 method with an implementation of `JSONRPCClient`,
+call the `call` method, passing it the name of the method to call and
+the params.
+
+If the response is JSON-RPC 2.0 result object, only the result will be
+returned, none of the wrapper.
+
+If the response is JSON-RPC 2.0 error response, and exception will be
+thrown for the error.
 
 ```typescript
-class MathClient extends RPCHTTPClient {
-  async add(a: number, b: number): Promise<number> {
-    return this.call("add", [a, b]);
-  }
-  async subtract(a: number, b: number): Promise<number> {
-    return this.call("subtract", [a, b]);
-  }
-  async divide(a: number, b: number): Promise<number> {
-    return this.call("divide", [a, b]);
-  }
-}
+import {RPCHTTPClient} from "jsonrpc2-tsclient";
 
-var client = new MathClient("http://localhost:5000/api/v1");
-client.add(2, 3).then((res) => console.log(res));
-client.subtract(2, 3).then((res) => console.log(res));
-client.divide(3, 2).then((res) => console.log(res));
-```
-
-## Errors
-
-If the server responds with an error, an RpcError is thrown.
-There is an RpcError for each standard JSON RPC 2.0 error, each of them extends RpcError.
-
-```typescript
-var client = new MathClient("http://localhost:5000/api/v1");
-
-client
-  .add("two", "three")
-  .then((res) => console.log(res))
-  .catch((error) => console.log(error)); // InvalidParams error.
-
-client
-  .divide(0, 0)
-  .then((res) => console.log(res))
-  .catch((error) => console.log(error)); // ServerError error.
+let client = new RPCHTTPClient("http://localhost:5000/api/v1/");
+client.call("divide", [0, 0])
+  .then(res => console.log(`JSON-RPC Result: ${res}`))
+  .catch(err => console.log(`JSON-RPC Error: ${err}`));
 ```
