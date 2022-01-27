@@ -70,12 +70,13 @@ export class ServerError extends JSONRPCError {
   }
 }
 
+const errorCodeMap = new Map();
+errorCodeMap.set("-32700", ParseError);
+errorCodeMap.set("-32600", InvalidRequest);
+errorCodeMap.set("-32601", MethodNotFound);
+errorCodeMap.set("-32602", InvalidParams);
+errorCodeMap.set("-32603", InternalError);
+
 export function getErrorByCode(code) {
-  return {
-    "-32700": ParseError,
-    "-32600": InvalidRequest,
-    "-32601": MethodNotFound,
-    "-32602": InvalidParams,
-    "-32603": InternalError,
-  }[code as string];
+  return errorCodeMap.get(code as string);
 }
