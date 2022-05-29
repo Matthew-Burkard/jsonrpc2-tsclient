@@ -42,7 +42,7 @@ export abstract class JSONRPCClient {
       let error = response.error;
       throw new (getErrorByCode(error.code) || ServerError)(error);
     } else {
-      throw Error(`Invalid response: ${data}`);
+      throw Error(`Invalid response: ${JSON.stringify(data)}`);
     }
   }
 }
