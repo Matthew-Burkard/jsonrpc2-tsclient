@@ -1,12 +1,12 @@
 import { RequestObject } from "./objects.js";
 import { JSONRPCClient } from "./client.js";
-import axios from "axios";
+import axios, { AxiosRequestHeaders } from "axios";
 
 export class RPCHTTPClient extends JSONRPCClient {
   url: string;
-  headers: object;
+  headers: AxiosRequestHeaders;
 
-  constructor(url: string, headers: object | null = null) {
+  constructor(url: string, headers: AxiosRequestHeaders | null = null) {
     super();
     this.url = url;
     this.headers = headers || {};

@@ -41,7 +41,7 @@ export class ErrorObject {
 }
 
 export class ErrorResponseObject {
-  id: number | string;
+  id: number | string | undefined;
   error: ErrorObject;
   jsonrpc: string;
 
