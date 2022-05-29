@@ -24,7 +24,7 @@ export abstract class JSONRPCClient {
 
   protected abstract sendAndGetJSON(request: RequestObject): Promise<any>;
 
-  protected async call(method: string, params?: any[] | object): Promise<any> {
+  async call(method: string, params?: any[] | object): Promise<any> {
     this.preCallHooks.map((it) => it());
     await Promise.all(this.preCallAsyncHooks.map((it) => it()));
 
