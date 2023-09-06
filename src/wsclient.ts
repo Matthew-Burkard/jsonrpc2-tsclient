@@ -13,7 +13,7 @@ export class RPCWebsocketClient extends JSONRPCClient {
     this.url = url;
     this.headers = headers;
     this.headers["Content-Type"] = "application/json";
-    this.ws = new WebSocket(url);
+    this.ws = new WebSocket(url, { headers });
     this.messageResolvers = new Map();
     this.ws.on("message", (data) => {
       const response = JSON.parse(data.toString());
