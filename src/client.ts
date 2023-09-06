@@ -30,7 +30,7 @@ export abstract class JSONRPCClient {
 
     let request = new RequestObject(this.getId(), method, params);
     let data = await this.sendAndGetJSON(request);
-    let response;
+    let response: any;
     if (data.id !== undefined) {
       this.ids.delete(data.id);
     }

@@ -1,5 +1,6 @@
 import { JSONRPCClient } from "./client.js";
 import {
+  getErrorByCode,
   InternalError,
   InvalidParams,
   InvalidRequest,
@@ -7,9 +8,9 @@ import {
   MethodNotFound,
   ParseError,
   ServerError,
-  getErrorByCode,
 } from "./errors.js";
 import { RPCHTTPClient } from "./httpclient.js";
+import { RPCWebsocketClient } from "./wsclient.js";
 import {
   ErrorObject,
   ErrorResponseObject,
@@ -30,6 +31,7 @@ export {
   NotificationObject,
   ParseError,
   RPCHTTPClient,
+  RPCWebsocketClient,
   RequestObject,
   ResultResponseObject,
   ServerError,
