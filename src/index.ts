@@ -10,7 +10,7 @@ import {
   ServerError,
 } from "./errors.js";
 import { RPCHTTPClient } from "./httpclient.js";
-import { RPCWebsocketClient } from "./wsclient.js";
+import { RPCWebSocketClient } from "./wsclient.js";
 import {
   ErrorObject,
   ErrorResponseObject,
@@ -31,7 +31,7 @@ export {
   NotificationObject,
   ParseError,
   RPCHTTPClient,
-  RPCWebsocketClient,
+  RPCWebSocketClient,
   RequestObject,
   ResultResponseObject,
   ServerError,

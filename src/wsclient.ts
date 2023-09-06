@@ -2,7 +2,7 @@ import { WebSocket } from "ws";
 import { RequestObject } from "./objects.js";
 import { JSONRPCClient } from "./client.js";
 
-export class RPCWebsocketClient extends JSONRPCClient {
+export class RPCWebSocketClient extends JSONRPCClient {
   url: string;
   headers: object;
   private readonly ws: WebSocket;

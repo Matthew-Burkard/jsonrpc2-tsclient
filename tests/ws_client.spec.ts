@@ -1,7 +1,7 @@
 // @ts-ignore
-import { RPCWebsocketClient } from "../src";
+import { RPCWebSocketClient } from "../src";
 
-class MathClient extends RPCWebsocketClient {
+class MathClient extends RPCWebSocketClient {
   async add(a: number, b: number): Promise<number> {
     return this.call("math.add", [a, b]);
   }
