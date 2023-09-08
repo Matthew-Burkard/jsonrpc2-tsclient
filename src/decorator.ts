@@ -2,11 +2,9 @@ import { JSONRPCClient } from "./client";
 
 export function rpcClient(
   transport: JSONRPCClient,
-  methodPrefix: string | null = null,
+  methodPrefix: string = "",
   skipMethods: string[] = ["constructor"]
 ) {
-  methodPrefix = methodPrefix || "";
-
   function decorator(constructor: Function) {
     const methods = Object.getOwnPropertyNames(constructor.prototype);
 
