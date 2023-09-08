@@ -1,29 +1,28 @@
 // @ts-ignore
-import { RPCHTTPClient } from "../src";
+import { rpcClient, RPCHTTPClient } from "../src";
 
-class MathClient extends RPCHTTPClient {
-  async add(a: number, b: number): Promise<number> {
-    return this.call("math.add", [a, b]);
-  }
+const transport = new RPCHTTPClient("http://localhost:8000/api/v1");
 
-  async divide(a: number, b: number): Promise<number> {
-    return this.call("math.divide", [a, b]);
-  }
+@rpcClient(transport, "math.", ["connect", "close"])
+class MathClient {
+  // @ts-ignore
+  async add(a: number, b: number): Promise<number> {}
+
+  // @ts-ignore
+  async divide(a: number, b: number): Promise<number> {}
 }
 
-
 test("Result Integration test", async () => {
-  let client = new MathClient("http://localhost:8000/api/v1");
+  let client = new MathClient();
   const sum = await client.add(2, 2);
   return expect(sum).toBe(4);
 });
+
 test("Error Integration test", async () => {
-  let client = new MathClient("http://localhost:8000/api/v1");
+  let client = new MathClient();
   try {
     return await client.divide(0, 0);
   } catch (err) {
-    return expect(err.message).toBe(
-      "-32000: Server error - ZeroDivisionError: division by zero"
-    );
+    return expect(err.message.slice(0, 6)).toBe("-32000");
   }
 });

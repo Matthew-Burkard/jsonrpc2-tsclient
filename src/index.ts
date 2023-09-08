@@ -18,6 +18,7 @@ import {
   RequestObject,
   ResultResponseObject,
 } from "./objects.js";
+import { rpcClient } from "./decorator.js";
 
 export {
   ErrorObject,
@@ -36,4 +37,5 @@ export {
   ResultResponseObject,
   ServerError,
   getErrorByCode,
+  rpcClient,
 };

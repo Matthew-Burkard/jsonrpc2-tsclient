@@ -6,7 +6,8 @@
     "rootDir": "src",
     "moduleResolution": "Node",
     "declaration": true,
-    "removeComments": true
+    "removeComments": true,
+    "experimentalDecorators": true,
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "lib"]

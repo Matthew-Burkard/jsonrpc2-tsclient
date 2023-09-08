@@ -2,13 +2,41 @@
 
 A collection of classes for creating JSON RPC 2.0 clients.
 
-### Install
+## Install
 
 ```shell
 npm i jsonrpc2-tsclient
 ```
+## Example
 
-### Usage
+Example of the client decorator implementing RPC methods from reading
+method signatures.
+
+```ts
+import {rpcClient, RPCHTTPClient} from "jsonrpc2-tsclient";
+
+const transport = new RPCHTTPClient("http://localhost:8000/api/v1");
+
+interface Vector3 {
+  x: number;
+  y: number;
+  z: number;
+}
+
+@rpcClient(transport, "math.")
+class MathClient {
+  // @ts-ignore
+  async add(a: number, b: number): Promise<number> {}
+  // @ts-ignore
+  async get_distance(a: Vector3, b: Vector3): Promise<Vector3> {}
+}
+
+const client = new MathClient();
+client.add(2, 2).then(res => console.log(res));
+client.get_distance({x: 1, y: 1, z: 1}, {x: 1, y: 1, z: 1}).then(res => console.log(res));
+```
+
+## Usage
 
 The `JSONRPCClient` will handle forming requests and parsing responses.
 To call a JSON-RPC 2.0 method with an implementation of `JSONRPCClient`,
@@ -39,12 +67,12 @@ client.call("divide", [0, 0])
 wsClient.close();
 ```
 
-### JSONRPCClient Abstract Class
+## JSONRPCClient Abstract Class
 
 JSON-RPC 2.0 is transport agnostic. This library provides an abstract
 class that can be extended to create clients for different transports.
 
-### Implementations
+## Implementations
 
 To make client for a transport, extend the `JSONRPCClient` class and
 implement the `sendAndGetJSON` which takes a request object and is

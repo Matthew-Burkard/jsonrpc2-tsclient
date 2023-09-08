@@ -5,7 +5,7 @@ import { JSONRPCClient } from "./client.js";
 export class RPCWebSocketClient extends JSONRPCClient {
   url: string;
   headers: object;
-  private readonly ws: WebSocket;
+  private ws: WebSocket;
   private readonly messageResolvers: Map<any, any>;
 
   constructor(url: string, headers = {}) {
@@ -13,8 +13,17 @@ export class RPCWebSocketClient extends JSONRPCClient {
     this.url = url;
     this.headers = headers;
     this.headers["Content-Type"] = "application/json";
-    this.ws = new WebSocket(url, { headers });
     this.messageResolvers = new Map();
+  }
+
+  /**
+   * Connect to WebSocket server.
+   */
+  connect() {
+    if (this.ws) {
+      this.ws.close();
+    }
+    this.ws = new WebSocket(this.url, this.headers);
     this.ws.on("message", (data) => {
       const response = JSON.parse(data.toString());
       const requestId = response.id;
@@ -24,6 +33,13 @@ export class RPCWebSocketClient extends JSONRPCClient {
         this.messageResolvers.delete(requestId);
       }
     });
+  }
+
+  /**
+   * Close connection to WebSocket server.
+   */
+  close() {
+    this.ws.close();
   }
 
   protected async sendAndGetJSON(request: RequestObject) {
@@ -46,9 +62,5 @@ export class RPCWebSocketClient extends JSONRPCClient {
     });
 
     return await promise;
-  }
-
-  close() {
-    this.ws.close();
   }
 }
